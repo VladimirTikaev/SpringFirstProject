@@ -1,0 +1,10 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/springftwr?useUnicode=true&serverTimezone=UTC
+        username: root
+        password: somePass3721
+    jpa:
+        show-sql: true
