@@ -1,0 +1,1 @@
+CREATE SCHEMA `springftwr` DEFAULT CHARACTER SET utf8 ;
