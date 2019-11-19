@@ -9,7 +9,7 @@ import com.vladimirt.core.model.User;
 
 @RestController //Указывает что здесь у нас контроллер
 @RequiredArgsConstructor// анотация ломбока - создает конструктор для всех final полей
-public class SomeController {
+public class UserController {
 
     private final IUserService userService; // Здесь используем интерфейс и мы не будем привязаны к реалиазции сервиса
 
