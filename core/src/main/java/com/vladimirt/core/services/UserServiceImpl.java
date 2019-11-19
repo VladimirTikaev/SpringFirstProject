@@ -14,9 +14,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User getUser(Long id) {
-
-        return userRepository.findById(id).get(); //Здесь создается репозиторий и там за счет того, что он унаследован
-        // от касса CRUD у нас есть куча полезных реализованных методов. Пишем .get чтобы вернуло User.
-        //Странно тольк то, что у нас нет реализации этого интерфейса
+        return userRepository.getById(id);
     }
 }
