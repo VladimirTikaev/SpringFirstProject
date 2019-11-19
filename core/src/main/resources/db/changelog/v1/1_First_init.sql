@@ -39,3 +39,4 @@ INSERT INTO `springftwr`.`roles` (`name`) VALUES ('MANAGER');
 INSERT INTO `springftwr`.`roles` (`name`) VALUES ('ADMIN');
 
 INSERT INTO `springftwr`.`users_roles` (`user_id`, `role_id`) VALUES ('1','1');
+INSERT INTO `springftwr`.`users_roles` (`user_id`, `role_id`) VALUES ('1','2');
