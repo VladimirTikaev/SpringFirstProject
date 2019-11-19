@@ -1,5 +1,6 @@
 package com.vladimirt.core.controllers;
 
+import com.vladimirt.core.dto.UserDTO;
 import com.vladimirt.core.services.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +15,17 @@ public class UserController {
     private final IUserService userService; // Здесь используем интерфейс и мы не будем привязаны к реалиазции сервиса
 
     @GetMapping("/users/{id}") // Здесь указываем путь и переменные в таких скобках {}
-    public User sayHello(@PathVariable Long id){//Здесь для того чтобы использовать переменную id из браузерной строки
+    public UserDTO sayHello(@PathVariable Long id){//Здесь для того чтобы использовать переменную id из браузерной строки
         // нужно указаться @PathVariable
-        return userService.getUser(id) ;
+        User user = userService.getUser(id);
+        return toDTO(user);
+    }
+
+    private UserDTO toDTO(User user){
+
+        return UserDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .build();
     }
 }
