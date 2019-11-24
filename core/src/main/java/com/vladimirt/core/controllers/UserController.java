@@ -16,11 +16,13 @@ public class UserController {
 
     private final IUserService userService; // Здесь используем интерфейс и мы не будем привязаны к реалиазции сервиса
 
+    private final UserMapper userMapper;
+
     @GetMapping("/users/{id}") // Здесь указываем путь и переменные в таких скобках {}
     public UserDTO sayHello(@PathVariable Long id){//Здесь для того чтобы использовать переменную id из браузерной строки
         // нужно указаться @PathVariable
         User user = userService.getUser(id);
-        return UserMapper.INSTANCE.toDTO(user);
+        return userMapper.toDTO(user);
     }
 
 }
