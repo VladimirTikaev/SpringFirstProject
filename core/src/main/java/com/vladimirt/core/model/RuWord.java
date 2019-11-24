@@ -3,6 +3,7 @@ package com.vladimirt.core.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,4 +17,6 @@ public class RuWord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String meaning;
+    @OneToMany(mappedBy = "ruWord", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Card> cards;
 }
