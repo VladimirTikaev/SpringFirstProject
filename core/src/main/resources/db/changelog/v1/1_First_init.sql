@@ -40,3 +40,43 @@ INSERT INTO `springftwr`.`roles` (`name`) VALUES ('ADMIN');
 
 INSERT INTO `springftwr`.`users_roles` (`user_id`, `role_id`) VALUES ('1','1');
 INSERT INTO `springftwr`.`users_roles` (`user_id`, `role_id`) VALUES ('1','2');
+
+CREATE TABLE `springftwr`.`en_words` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `meaning` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `meaning_UNIQUE` (`meaning` ASC) VISIBLE);
+
+
+
+CREATE TABLE `springftwr`.`ru_words` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `meaning` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `meaning_UNIQUE` (`meaning` ASC) VISIBLE);
+
+
+CREATE TABLE `springftwr`.`cards` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `id_en_word` BIGINT(20) NOT NULL,
+  `id_ru_word` BIGINT(20) NOT NULL,
+  `rating` BIGINT(20) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_idx` (`id_en_word` ASC) VISIBLE,
+  INDEX `fk_ru_word_idx` (`id_ru_word` ASC) VISIBLE,
+  CONSTRAINT `fk_en_word`
+    FOREIGN KEY (`id_en_word`)
+    REFERENCES `springftwr`.`en_words` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ru_word`
+    FOREIGN KEY (`id_ru_word`)
+    REFERENCES `springftwr`.`ru_words` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+INSERT INTO `springftwr`.`en_words` (`meaning`) VALUES ('Hello');
+INSERT INTO `springftwr`.`ru_words` (`meaning`) VALUES ('Привет');
+INSERT INTO `springftwr`.`cards` (`id_en_word`,`id_ru_word`,`rating`) VALUES ('1', '1','1');
