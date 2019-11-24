@@ -3,6 +3,7 @@ package com.vladimirt.core.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,4 +18,6 @@ public class EnWord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String meaning;
+    @OneToMany(mappedBy = "enWord", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Card> cards;
 }
